@@ -1,10 +1,10 @@
 package pl.gregnote.testshopingapp.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_shopping_item.*
@@ -37,8 +37,8 @@ class ShoppingItemsFragment : Fragment() {
         arguments?.getInt("listId")?.also { listId ->
             itemsRecyclerView.adapter = adapter
             viewModel = ViewModelProviders.of(this).get(ShoppingItemsViewModel::class.java)
-
-            viewModel.getShoppingList(listId)?.observe(viewLifecycleOwner, Observer { shoppingList ->
+            viewModel.fetchData(listId)
+            viewModel.shoppingList.observe(viewLifecycleOwner, Observer { shoppingList ->
                 nameEdit.setText(shoppingList.name)
                 nameEdit.isEnabled = !shoppingList.archived
                 name.setEndIconOnClickListener {
@@ -59,7 +59,7 @@ class ShoppingItemsFragment : Fragment() {
                 }
             })
 
-            viewModel.getShoppingItems(listId)?.observe(viewLifecycleOwner, Observer {
+            viewModel.shoppingItems.observe(viewLifecycleOwner, Observer {
                 adapter.updateItems(it)
             })
         }

@@ -18,18 +18,13 @@ abstract class ShoppingDatabase : RoomDatabase() {
         @Volatile
         private var instance: ShoppingDatabase? = null
 
-        fun getDatabase(context: Context): ShoppingDatabase? {
-            if (instance == null) {
-                synchronized(ShoppingDatabase::class.java) {
-                    if (instance == null) {
-                        instance = Room.databaseBuilder(
-                            context.applicationContext,
-                            ShoppingDatabase::class.java, "shopping_database"
-                        ).build()
-                    }
-                }
+        fun getDatabase(context: Context): ShoppingDatabase {
+            synchronized(ShoppingDatabase::class.java) {
+                return instance ?: Room.databaseBuilder(
+                    context.applicationContext,
+                    ShoppingDatabase::class.java, "shopping_database"
+                ).build().apply { instance = this }
             }
-            return instance
         }
     }
 

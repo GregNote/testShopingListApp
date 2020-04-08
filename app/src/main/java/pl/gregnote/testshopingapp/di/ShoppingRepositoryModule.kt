@@ -7,14 +7,11 @@ import pl.gregnote.testshopingapp.repository.ShoppingRepository
 import javax.inject.Singleton
 
 @Module
-class ShoppingRepositoryModule(
-    @ApplicationContext
-    val context: Context
-) {
+object ShoppingRepositoryModule {
 
     @Provides
     @Singleton
-    fun provideShoppingRepository(): ShoppingRepository {
+    fun provideShoppingRepository(@ApplicationContext context: Context): ShoppingRepository {
         return ShoppingRepository(context)
     }
 }

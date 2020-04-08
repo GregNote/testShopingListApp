@@ -14,10 +14,9 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        applicationComponent = DaggerApplicationComponent
-            .builder()
+        applicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this))
-            .shoppingRepositoryModule(ShoppingRepositoryModule(this))
+            .shoppingRepositoryModule(ShoppingRepositoryModule)
             .build()
     }
 }
