@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ListsFragment">
+
+    <fragment
+        android:id="@+id/ListsFragment"
+        android:name="pl.gregnote.testshopingapp.view.ShoppingListsFragment"
+        android:label="@string/lists_fragment_label"
+        tools:layout="@layout/fragment_shopping_list">
+
+        <action
+            android:id="@+id/action_listsFragment_to_itemsFragment"
+            app:destination="@id/ItemsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ItemsFragment"
+        android:name="pl.gregnote.testshopingapp.view.ShoppingItemsFragment"
+        android:label="@string/items_fragment_label"
+        tools:layout="@layout/fragment_shopping_item">
+        <argument
+            android:name="listId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

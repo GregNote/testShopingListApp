@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Test Shopping App</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_clear">Clear</string>
+
+    <string name="lists_fragment_label">Lists</string>
+    <string name="items_fragment_label">Items</string>
+    <string name="nameHint">Name</string>
+    <string name="nameText">Text</string>
+</resources>
